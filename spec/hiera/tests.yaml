@@ -1,0 +1,5 @@
+---
+wireguard::local_addr4: 10.0.1.1/24
+wireguard::local_addr6: fdc9:281f:4d7:9ee9::1:1/64
+wireguard::package_name: wireguard
+wireguard::private_key: wireguard
