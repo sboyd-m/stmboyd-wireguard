@@ -5,6 +5,7 @@ class wireguard::configure () {
         local_addr4 => $wireguard::local_addr4,
         local_addr6 => $wireguard::local_addr6,
         private_key => $wireguard::private_key,
+        peers       => $wireguard::peers,
     }),
     owner     => root,
     group     => root,

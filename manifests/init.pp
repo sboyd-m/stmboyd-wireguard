@@ -3,6 +3,7 @@ class wireguard (
   Stdlib::IP::Address::V6::CIDR $local_addr6,
   String $package_name,
   String $private_key,
+  Array[Hash] $peers,
   Boolean $is_vpn_server = false,
 ) {
   class { 'wireguard::install': }

@@ -18,5 +18,6 @@ gem 'rspec-puppet-facts', '~> 2.0', '>= 2.0.5'
 gem 'rubocop', '~> 1.50'
 gem 'rubocop-rake', '~> 0.6.0'
 gem 'voxpupuli-puppet-lint-plugins', '~> 5.0'
+gem 'yaml-lint', '~> 0.1.2'
 
 # vim: syntax=ruby
