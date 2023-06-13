@@ -4,6 +4,7 @@
   Stdlib::IP::Address::V4::CIDR $peer_addr4,
   Stdlib::IP::Address::V6::CIDR $peer_addr6,
 | -%>
+
 [Peer]
 PublicKey = <%= $public_key %>
 AllowedIPs = <%= $peer_addr4 %>, <%= $peer_addr6 %>
