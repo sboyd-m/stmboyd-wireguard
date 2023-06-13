@@ -4,8 +4,8 @@ class wireguard (
   String $package_name,
   String $service,
   String $private_key,
-  Array[Hash] $peers,
-  Boolean $is_vpn_server = false,
+  String $public_key,
+  String $mesh_key,
 ) {
   class { 'wireguard::install': }
   -> class { 'wireguard::configure': }

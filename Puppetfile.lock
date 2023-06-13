@@ -1,8 +1,11 @@
 FORGE
   remote: https://forgeapi.puppetlabs.com
   specs:
+    puppetlabs-concat (8.0.1)
+      puppetlabs-stdlib (>= 4.13.1, < 9.0.0)
     puppetlabs-stdlib (8.6.0)
 
 DEPENDENCIES
+  puppetlabs-concat (>= 8.0.1)
   puppetlabs-stdlib (>= 5.2.0)
 

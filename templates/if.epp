@@ -2,18 +2,14 @@
   Stdlib::IP::Address::V4::CIDR $local_addr4,
   Stdlib::IP::Address::V6::CIDR $local_addr6,
   String $private_key,
-  Array[Hash] $peers,
+  Optional[Stdlib::IP::Address::V4::Nosubnet] $dns4 = undef,
+  Optional[Stdlib::IP::Address::V6::Nosubnet] $dns6 = undef,
+  Optional[Stdlib::Fqdn] $dns_domain = undef,
 | -%>
 [Interface]
 Address = <%= $local_addr4 %>, <%= $local_addr6 %>
 ListenPort = 51820
 PrivateKey = <%= $private_key %>
-<%- $peers.each |$peer| { -%>
-
-[Peer]
-PublicKey = <%= $peer['PublicKey'] %>
-AllowedIPS = <%= $peer['AllowedIPS'] %>
-<%- if $peer['Endpoint'] { -%>
-Endpoint = <%= $peer['Endpoint'] %>
-<%- } -%>
+<%- if $dns4 { -%>
+DNS = <%= $dns4 %><%- if $dns6 { -%>, $dns6<%- } -%><%- if $dns_domain { -%>, $dns_domain<%- } -%>
 <%- } -%>

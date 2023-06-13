@@ -1,0 +1,10 @@
+<%- |
+  String $public_key,
+  Stdlib::IP::Address $public_endpoint,
+  Stdlib::IP::Address::V4::CIDR $peer_addr4,
+  Stdlib::IP::Address::V6::CIDR $peer_addr6,
+| -%>
+[Peer]
+PublicKey = <%= $public_key %>
+AllowedIPs = <%= $peer_addr4 %>, <%= $peer_addr6 %>
+Endpoint = <%= $public_endpoint %>:51820
