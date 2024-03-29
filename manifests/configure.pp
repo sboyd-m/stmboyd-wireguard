@@ -10,12 +10,7 @@ class wireguard::configure () {
 
   concat::fragment { 'Interface definition':
     target  => '/etc/wireguard/wg0.conf',
-    content => epp('wireguard/if.epp', {
-        local_addr4 => $wireguard::local_addr4,
-        local_addr6 => $wireguard::local_addr6,
-        private_key => $wireguard::private_key,
-        table       => $wireguard::table,
-    }),
+    content => epp('wireguard/if.epp'),
   }
 
   $exportable_ip4 = regsubst($wireguard::local_addr4, '\\d{1,2}$', '32')
@@ -26,7 +21,6 @@ class wireguard::configure () {
     target  => '/etc/wireguard/wg0.conf',
     tag     => $wireguard::mesh_key,
     content => epp('wireguard/peer_fragment.epp', {
-        public_key      => $wireguard::public_key,
         public_endpoint => $facts['networking']['ip'],
         peer_addr4      => $exportable_ip4,
         peer_addr6      => $exportable_ip6,

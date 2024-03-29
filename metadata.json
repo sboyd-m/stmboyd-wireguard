@@ -1,6 +1,6 @@
 {
   "name": "stmboyd-wireguard",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "Stephen Boyd",
   "summary": "Install and configure wireguard",
   "license": "Unlicense",

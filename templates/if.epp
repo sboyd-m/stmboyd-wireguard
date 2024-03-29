@@ -1,19 +1,15 @@
 <%- |
-  Stdlib::IP::Address::V4::CIDR $local_addr4,
-  Stdlib::IP::Address::V6::CIDR $local_addr6,
-  String $private_key,
   Optional[Stdlib::IP::Address::V4::Nosubnet] $dns4 = undef,
   Optional[Stdlib::IP::Address::V6::Nosubnet] $dns6 = undef,
   Optional[Stdlib::Fqdn] $dns_domain = undef,
-  Optional[Variant[Integer, Enum['off']]] $table = undef,
 | -%>
 [Interface]
-<%- if $table { -%>
-Table = <%= $table %>
+<%- if $wireguard::table { -%>
+Table = <%= $wireguard::table %>
 <%- } -%>
-Address = <%= $local_addr4 %>, <%= $local_addr6 %>
+Address = <%= $wireguard::local_addr4 %>, <%= $wireguard::local_addr6 %>
 ListenPort = 51820
-PrivateKey = <%= $private_key %>
+PrivateKey = <%= $wireguard::private_key %>
 <%- if $dns4 { -%>
 DNS = <%= $dns4 %><%- if $dns6 { -%>, $dns6<%- } -%><%- if $dns_domain { -%>, $dns_domain<%- } -%>
 <%- } -%>
