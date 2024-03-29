@@ -5,8 +5,12 @@
   Optional[Stdlib::IP::Address::V4::Nosubnet] $dns4 = undef,
   Optional[Stdlib::IP::Address::V6::Nosubnet] $dns6 = undef,
   Optional[Stdlib::Fqdn] $dns_domain = undef,
+  Optional[Variant[Integer, Enum['off']]] $table = undef,
 | -%>
 [Interface]
+<%- if $table { -%>
+Table = <%= $table %>
+<%- } -%>
 Address = <%= $local_addr4 %>, <%= $local_addr6 %>
 ListenPort = 51820
 PrivateKey = <%= $private_key %>

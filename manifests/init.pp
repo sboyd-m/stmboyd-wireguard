@@ -6,6 +6,7 @@ class wireguard (
   String $private_key,
   String $public_key,
   String $mesh_key,
+  Optional[Variant[Integer, Enum['off']]] $table = undef,
 ) {
   class { 'wireguard::install': }
   -> class { 'wireguard::configure': }

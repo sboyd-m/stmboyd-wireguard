@@ -4,3 +4,4 @@ wireguard::local_addr6: fdc9:281f:4d7:9ee9::1:1/64
 wireguard::private_key: wireguard
 wireguard::public_key: public
 wireguard::mesh_key: coolkids
+wireguard::table: 2
