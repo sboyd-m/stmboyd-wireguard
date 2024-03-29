@@ -13,8 +13,8 @@ class wireguard::configure () {
     content => epp('wireguard/if.epp'),
   }
 
-  $exportable_ip4 = regsubst($wireguard::local_addr4, '\\d{1,2}$', '32')
-  $exportable_ip6 = regsubst($wireguard::local_addr6, '\\d{1,3}$', '128')
+  $exportable_ip4 = regsubst($wireguard::nat_source4, '\\d{1,2}$', '32')
+  $exportable_ip6 = regsubst($wireguard::nat_source6, '\\d{1,3}$', '128')
 
   # Export this interface into the common mesh group
   @@concat::fragment { "Peer ${$facts['networking']['hostname']}":
