@@ -1,6 +1,6 @@
 {
   "name": "stmboyd-wireguard",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "author": "Stephen Boyd",
   "summary": "Install and configure wireguard",
   "license": "Unlicense",
@@ -19,13 +19,15 @@
     {
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
-        "11"
+        "11",
+        "12"
       ]
     },
     {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
-        "22.04"
+        "22.04",
+        "24.04"
       ]
     }
   ],
