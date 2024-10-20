@@ -4,6 +4,7 @@
 .yardoc
 .yardwarns
 *.iml
+/.bundle/
 /.idea/
 /.vagrant/
 /coverage/
@@ -14,8 +15,9 @@
 /log/
 /pkg/
 /spec/fixtures/manifests/
-/spec/fixtures/modules/
+/spec/fixtures/modules/*
 /tmp/
+/vendor/
 /.vendor/
 /convert_report.txt
 /update_report.txt
@@ -24,4 +26,9 @@
 .envrc
 /inventory.yaml
 /spec/fixtures/litmus_inventory.yaml
-/.tmp/
+.resource_types
+.modules
+.task_cache.json
+.plan_cache.json
+.rerun.json
+bolt-debug.log

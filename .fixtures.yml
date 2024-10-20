@@ -1,6 +1,10 @@
-# This file can be used to install module dependencies for unit testing
-# See https://github.com/puppetlabs/puppetlabs_spec_helper#using-fixtures for details
 ---
 fixtures:
-  forge_modules:
-#     stdlib: "puppetlabs/stdlib"
+  repositories:
+    concat:
+      repo: https://github.com/puppetlabs/puppetlabs-concat.git
+      ref: v8.0.1
+    stdlib:
+      repo: https://github.com/puppetlabs/puppetlabs-stdlib.git
+      ref: 5.2.0
+...
