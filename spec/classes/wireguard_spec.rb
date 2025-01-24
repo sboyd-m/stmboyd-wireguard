@@ -28,7 +28,43 @@ describe 'wireguard' do
           ListenPort = 51820
           PrivateKey = wireguard
         EOF
-      )}
+        )}
+
+      context "with export_default_route set to false" do
+        subject { exported_resources }
+
+        it { is_expected.to contain_concat__fragment('Peer supernode').with(
+          target: '/etc/wireguard/wg0.conf',
+          tag: '["coolkids", "supernode"]',
+          content: <<~EOT
+
+            [Peer]
+            PublicKey = public
+            AllowedIPs = 10.0.1.1/32, fdc9:281f:4d7:9ee9::1:1/128
+            Endpoint = 172.16.254.254:51820
+            PersistentKeepalive = 25
+          EOT
+        )}
+      end
+
+      context "with export_default_route set to true" do
+        let(:params) {{
+          export_default_route: true,
+        }}
+
+        subject { exported_resources }
+
+        it { is_expected.to contain_concat__fragment('Peer supernode').with(
+          content: <<~EOT
+
+            [Peer]
+            PublicKey = public
+            AllowedIPs = 0.0.0.0/0, ::/0
+            Endpoint = 172.16.254.254:51820
+            PersistentKeepalive = 25
+          EOT
+        )}
+      end
     end
   end
 end
