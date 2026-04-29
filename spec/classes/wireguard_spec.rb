@@ -42,7 +42,7 @@ describe 'wireguard' do
             PublicKey = public
             AllowedIPs = 10.0.1.1/32, fdc9:281f:4d7:9ee9::1:1/128
             Endpoint = 172.16.254.254:51820
-            PersistentKeepalive = 25
+            PersistentKeepalive = 3
           EOT
         )}
       end
@@ -61,7 +61,7 @@ describe 'wireguard' do
             PublicKey = public
             AllowedIPs = 0.0.0.0/0, ::/0
             Endpoint = 172.16.254.254:51820
-            PersistentKeepalive = 25
+            PersistentKeepalive = 3
           EOT
         )}
       end
