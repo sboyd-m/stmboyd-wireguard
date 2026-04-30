@@ -11,7 +11,7 @@ class wireguard (
 ) {
   class { 'wireguard::install': }
   -> class { 'wireguard::configure': }
-  ~> service { "${wireguard::service}@wg0.service":
+  -> service { "${wireguard::service}@wg0.service":
     ensure => running,
     enable => true,
   }
