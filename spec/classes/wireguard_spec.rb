@@ -35,7 +35,7 @@ describe 'wireguard' do
 
         it { is_expected.to contain_concat__fragment('Peer supernode').with(
           target: '/etc/wireguard/wg0.conf',
-          tag: '["coolkids", "supernode"]',
+          tag: 'coolkids',
           content: <<~EOT
 
             [Peer]

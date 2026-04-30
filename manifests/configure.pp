@@ -26,7 +26,7 @@ class wireguard::configure () {
   # Export this interface into the common mesh group
   @@concat::fragment { "Peer ${$facts['networking']['hostname']}":
     target  => '/etc/wireguard/wg0.conf',
-    tag     => [$wireguard::mesh_key, $facts['networking']['hostname']],
+    tag     => $wireguard::mesh_key,
     content => epp('wireguard/peer_fragment.epp', {
         public_endpoint => $facts['networking']['ip'],
         peer_addr4      => $exportable_ip4,
@@ -34,6 +34,6 @@ class wireguard::configure () {
     }),
   }
 
-  # Collect our peers
-  Concat::Fragment <<| (tag == $wireguard::mesh_key) and (tag != $facts['networking']['hostname']) |>>
+  # Collect our peers (excluding the fragment we just exported ourselves)
+  Concat::Fragment <<| tag == $wireguard::mesh_key and title != "Peer ${facts['networking']['hostname']}" |>>
 }
